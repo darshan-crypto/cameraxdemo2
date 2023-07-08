@@ -87,13 +87,12 @@ class FrameAnalyzer(private val outputFile: File, private val mycontext: Context
                     while (yimages[0].size != (FrameRate.roundToInt()*10)){
                     Log.d("writerx","${yimages[0].size} ${FrameRate.roundToInt()*10}")
 
-                    //  Thread.sleep(500)
+                    
                     }
                      Log.d("writerx","processing started")
                     while (!allAre0or4()){
 
                             for (i in 0..9){
-//                                    Log.d("writerx","i is ${i} state is ${videoStates[i]}")
                                     if(videoStates[i] == 2){
                                            Log.d("writerm ${i}","start writing for ${i}")
                                             videoStates[i] = 3
@@ -130,59 +129,12 @@ class FrameAnalyzer(private val outputFile: File, private val mycontext: Context
 
                             }
                     }
-//                    Toast.makeText(mycontext,"execution complemented",Toast.LENGTH_SHORT).show()
 Log.d("writer","all buffers are written to file")
             }
        }
         fun stop() {
                 Log.d("muxerdebug", "stopping button clicked")
-videoStates[currentarray] = 2;
-//                if (videoStates[currentarray] == 1) {
-//                        Log.d("muxerdebug", "stop saving started ${currentarray}")
-//                        val timex = System.currentTimeMillis()
-//                        val muxerConfig = MuxerConfig(
-//                                File(
-//                                        "/storage/emulated/0/Movies/",
-//                                        "test_${timex}.mp4"
-//                                ), 600, 480, "video/avc", 1, 20f, 1500000
-//                        )
-//                        val y = FrameBuilder(mycontext, muxerConfig, null)
-//                        y.start()
-//                        while (yimages[currentarray].size != 0) {
-//                                val mybitmap = BitmapFactory.decodeByteArray(
-//                                        yimages[currentarray][0],
-//                                        0,
-//                                        yimages[currentarray][0].size
-//                                )
-//                                y.createFrame(mybitmap)
-//                                yimages[currentarray].removeAt(0)
-//                        }
-//
-//
-//
-//                        y.releaseVideoCodec()
-//                        y.releaseAudioExtractor()
-//                        y.releaseMuxer()
-//                        videoStates[currentarray] = 4
-//                        Log.d("muxerdebug", "stop saving ended ${currentarray}")
-//
-//                } else {
-//                        Log.d("muxerdebug", "last state is ${videoStates[currentarray]}  ${currentarray}")
-//
-//                }
-
-//        while (true) {
-//            var boolx = true
-//            for (state in videoStates) {
-//                if (state == 1 || state == 2 || state == 3) {
-//                    Log.d("temptag", "state is ${state} ${currentarray}")
-//                    boolx = false
-//                }
-//            }
-//
-//            if (boolx) break
-//            else Thread.sleep(2000)
-//        }
+                videoStates[currentarray] = 2;
                 Toast.makeText(mycontext, "recording stopped ${z}", Toast.LENGTH_SHORT).show()
         }
 
@@ -199,49 +151,9 @@ videoStates[currentarray] = 2;
                         yimages[currentarray].add(x);
                         z++;
                         if (z == 300) {
-//                                Toast.makeText(mycontext,"file started",Toast.LENGTH_SHORT).show()
-//                                Log.d("anatime", "muxer")
+
                                 videoStates[currentarray] = 2;
-//                                val priv = currentarray
-//                                executor.execute(Runnable {
-//
-//
-//                                        val time1 = System.currentTimeMillis()
-//                                        val muxerConfig = MuxerConfig(
-//                                                File("/storage/emulated/0/Movies/", "test_${time1}.mp4"),
-//                                                600,
-//                                                480,
-//                                                "video/avc",
-//                                                1,
-//                                                20f,
-//                                                1500000
-//                                        )
-//                                        Log.d("muxerdebug", "writing to file started test_${time1}.mp4 ${priv}")
-//
-//                                        val y = FrameBuilder(mycontext, muxerConfig, null)
-//                                        y.start()
-//                                        videoStates[priv] = 3;
-//
-//                                        while (yimages[priv].size != 0) {
-//                                                val mybitmap = BitmapFactory.decodeByteArray(
-//                                                        yimages[priv][0],
-//                                                        0,
-//                                                        yimages[priv][0].size
-//                                                )
-//                                                y.createFrame(mybitmap)
-//                                                yimages[priv].removeAt(0)
-//                                        }
-//
-//
-//                                        y.releaseVideoCodec()
-//                                        y.releaseAudioExtractor()
-//                                        y.releaseMuxer()
-//                                        videoStates[priv] = 4;
-//
-//
-//                                        Log.d("muxerdebug", "writing to file ended test_${time1}.mp4 ${priv}")
-//
-//                                })
+
 
                                 z = 0;
 
