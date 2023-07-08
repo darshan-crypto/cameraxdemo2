@@ -199,7 +199,7 @@ class VideoFragment : Fragment() {
                     cameraSelectorx,
                     preview,
                     imageAnalyzer,
-//                    videocap
+                    videocap
                 )
 
 
