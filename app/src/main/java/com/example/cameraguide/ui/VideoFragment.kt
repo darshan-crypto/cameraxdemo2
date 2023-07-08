@@ -174,7 +174,7 @@ class VideoFragment : Fragment() {
                 Range<Int>(30, 30)
 
             )
-////            ext    .setCaptureRequestOption(CaptureRequest.CONTROL_AE_EXPOSURE_COMPENSATION, 1)
+
             val r = ResolutionSelector.Builder().setResolutionFilter(ResolutionFilterx()).build()
 
             imageAnalyzer = builder
