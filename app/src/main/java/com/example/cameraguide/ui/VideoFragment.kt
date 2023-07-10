@@ -170,7 +170,7 @@ class VideoFragment : Fragment() {
                 .build()
 
             val videocap =
-                VideoCapture.Builder(recorder).setTargetFrameRate(Range<Int>(30, 30)).build()
+                VideoCapture.Builder(recorder).setTargetFrameRate(Range<Int>(60, 60)).build()
 
             val builder = ImageAnalysis.Builder()
 
@@ -179,7 +179,7 @@ class VideoFragment : Fragment() {
 //            ext.setCaptureRequestOption(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.CONTROL_AE_MODE_OFF)
             ext.setCaptureRequestOption(
                 CaptureRequest.CONTROL_AE_TARGET_FPS_RANGE,
-                Range<Int>(30, 30)
+                Range<Int>(60, 60)
 
             )
 
