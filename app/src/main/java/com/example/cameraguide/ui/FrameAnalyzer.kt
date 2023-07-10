@@ -74,7 +74,7 @@ class FrameAnalyzer(private val mycontext: Context,,private val eventx:Recording
         private var videoStates: Array<Int> = arrayOf(1, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
         private var z: Int = 0 //frame counter
-        private val FrameRate = 30.0f
+        private val FrameRate = 60.0f
         private var currentarray: Int = 0
 
         public var is_recording = true
@@ -150,7 +150,7 @@ class FrameAnalyzer(private val mycontext: Context,,private val eventx:Recording
 
                         yimages[currentarray].add(x);
                         z++;
-                        if (z == 300) {
+                        if (z == 600) {
 
                                 videoStates[currentarray] = 2;
 
