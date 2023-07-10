@@ -16,7 +16,7 @@ import java.util.concurrent.Executors
 import kotlin.math.roundToInt
 
 
-class FrameAnalyzer(private val outputFile: File, private val mycontext: Context) :
+class FrameAnalyzer(private val mycontext: Context,,private val eventx:RecordingCompletionListner) :
         ImageAnalysis.Analyzer {
         private fun toBitmap(image: Image): ByteArray {
                 val planes = image.planes
@@ -83,13 +83,11 @@ class FrameAnalyzer(private val outputFile: File, private val mycontext: Context
 
        fun  writer(){
             executor.execute {
-                   Log.d("writerx","executor started")
-                    while (yimages[0].size != (FrameRate.roundToInt()*10)){
-                    Log.d("writerx","${yimages[0].size} ${FrameRate.roundToInt()*10}")
+                   
+                    while (yimages[0].size != (FrameRate.roundToInt()*10)){}
+                     
+                     var filearray:ArrayList<String>  = arrayListOf() ;
 
-                    
-                    }
-                     Log.d("writerx","processing started")
                     while (!allAre0or4()){
 
                             for (i in 0..9){
@@ -100,11 +98,13 @@ class FrameAnalyzer(private val outputFile: File, private val mycontext: Context
 
                                             executor.execute{
                                                     val timex = System.currentTimeMillis()
+                                                      val filex =  File(
+                                                    "/storage/emulated/0/Movies/",
+                                                    "test_${timex}.mp4"
+                                                )
+                                                filearray.add(filex.absolutePath)
                                                     val muxerConfig = MuxerConfig(
-                                                            File(
-                                                                    "/storage/emulated/0/Movies/",
-                                                                    "test_${timex}.mp4"
-                                                            ), 600, 480, "video/avc", 1, FrameRate, 1500000
+                                                           filex, 600, 480, "video/avc", 1, FrameRate, 1500000
                                                     )
                                                     val y = FrameBuilder(mycontext, muxerConfig, null)
                                                     y.start()
@@ -129,13 +129,13 @@ class FrameAnalyzer(private val outputFile: File, private val mycontext: Context
 
                             }
                     }
-Log.d("writer","all buffers are written to file")
+                eventx.recordCompleted(filearray)
+
             }
        }
         fun stop() {
-                Log.d("muxerdebug", "stopping button clicked")
+                
                 videoStates[currentarray] = 2;
-                Toast.makeText(mycontext, "recording stopped ${z}", Toast.LENGTH_SHORT).show()
         }
 
         override
