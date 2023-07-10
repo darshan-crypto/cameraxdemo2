@@ -96,7 +96,15 @@ class VideoFragment : Fragment() {
             if (is_recording_on == false) {
 
                 is_recording_on = true
-                frameAnalyzer = FrameAnalyzer(File("j"), requireContext())
+                frameAnalyzer = FrameAnalyzer(requireContext(), object : RecordingCompletionListner {
+                        override fun recordCompleted(filearray:ArrayList<String>) {
+                            for (filename in filearray){
+                                Log.d("errorx2","file written $filename")
+
+                            }
+                            _binding.videoCaptureButton.setText("completed")
+                        }
+                    })
 
                 imageAnalyzer.setAnalyzer(
                     ContextCompat.getMainExecutor(requireContext()),
