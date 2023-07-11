@@ -104,7 +104,7 @@ class FrameAnalyzer(private val mycontext: Context,,private val eventx:Recording
                                                 )
                                                 filearray.add(filex.absolutePath)
                                                     val muxerConfig = MuxerConfig(
-                                                           filex, 600, 480, "video/avc", 1, FrameRate, 1500000
+                                                           filex, 600, 480, "video/mp4v-es", 1, FrameRate, 1500000
                                                     )
                                                     val y = FrameBuilder(mycontext, muxerConfig, null)
                                                     y.start()
